@@ -3,7 +3,7 @@
 return [
     /*
       |--------------------------------------------------------------------------
-      | API Key
+      | Site ID (Domain)
       |--------------------------------------------------------------------------
       |
       | Each request requires a site_id parameter which is the domain of your
@@ -27,8 +27,19 @@ return [
       */
     'api_key' => env(key: 'PLAUSIBLE_API_KEY'),
 
+    /*
+      |--------------------------------------------------------------------------
+      | Metrics
+      |--------------------------------------------------------------------------
+      |
+      | Metrics are a variety of measurements made on your plausible website
+      | in order to better track its performance and statistics.
+      |
+      | @see https://plausible.io/docs/metrics-definitions
+      |
+      */
     'metrics' => [
-        'default'   => 'visitors,visits,pageviews,views_per_visit,bounce_rate,visit_duration',
-        'breakdown' => 'visitors,visits,pageviews,bounce_rate,visit_duration',
+        'default'   => env(key: 'PLAUSIBLE_METRICS_DEFAULT', default: 'visitors,visits,pageviews,views_per_visit,bounce_rate,visit_duration'),
+        'breakdown' => env(key: 'PLAUSIBLE_METRICS_BREAKDOWN', default: 'visitors,visits,pageviews,bounce_rate,visit_duration'),
     ],
 ];
