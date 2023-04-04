@@ -28,7 +28,7 @@ return [
     'api_key' => env(key: 'PLAUSIBLE_API_KEY'),
 
     'metrics' => [
-        'default' => 'visitors,visits,pageviews,views_per_visit,bounce_rate,visit_duration',
+        'default'   => 'visitors,visits,pageviews,views_per_visit,bounce_rate,visit_duration',
         'breakdown' => 'visitors,visits,pageviews,bounce_rate,visit_duration',
     ],
 ];

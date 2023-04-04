@@ -5,7 +5,6 @@ namespace NjoguAmos\Plausible;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use NjoguAmos\Plausible\Commands\PlausibleCommand;
 
 class PlausibleServiceProvider extends PackageServiceProvider
 {
