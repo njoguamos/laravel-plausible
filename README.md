@@ -41,9 +41,16 @@ There are three way to use this package.
 
 ### 1. Getting Realtime Visitors
 
-```text
-@TODO: Working on it
+To get the current visitors on your default site, run a request as follows.
+
+```php
+$visitors = (new \NjoguAmos\Plausible\Plausible())->realtime();
 ```
+The response in a single digit number
+```json
+12
+```
+
 
 ## Testing
 >**Info**

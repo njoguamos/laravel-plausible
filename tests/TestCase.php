@@ -2,21 +2,11 @@
 
 namespace NjoguAmos\Plausible\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use NjoguAmos\Plausible\PlausibleServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'NjoguAmos\\Plausible\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
@@ -26,11 +16,7 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-plausible_table.php.stub';
-        $migration->up();
-        */
+        config()->set('plausible.site_id', 'dealersyard.com');
+        config()->set('plausible.api_key', 'dbNSKCE1b5rASiYgpPzQ4bC92WZw4xVS97bF_JQFHARlVtu26RUk2DMVCL5L4iNY');
     }
 }
