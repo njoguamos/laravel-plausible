@@ -1,5 +1,5 @@
 ![Cover image](/cover.png)
-# Plausible Analytics for Laravel 8+
+# Plausible Analytics for Laravel 10+
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-plausible)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-plausible/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/njoguamos/laravel-plausible/actions?query=workflow%3Arun-tests+branch%3Amain)
