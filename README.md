@@ -61,7 +61,7 @@ use NjoguAmos\Plausible\Facades\Plausible;
 $all = Plausible::aggregates();
 ```
 
-### 1. Getting Aggregates
+### 2. Getting Aggregates
 
 To get the aggregates, run a request as follows.
 
@@ -80,7 +80,7 @@ $aggregates = (new Plausible())
         date: '2023-01-01,2023-01-31'
     );
 ```
-The response a json
+A successful response will be a json. Example;
 ```json
 {
     "bounce_rate": {
