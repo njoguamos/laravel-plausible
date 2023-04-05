@@ -313,6 +313,26 @@ Date in `Y-m-d` format. Individual date e.g `2023-01-04` or a range  `2023-01-01
 > You must include `period: 'custom'` when you provide a date range.
 </details>
 
+### 4. Getting Breakdown
+```text
+@TODO: Working on it
+```
+
+### 5. Caching Response
+
+To increased performance of your application and reduce reliance to plausible api, all requests are cached for 3 minutes. You can specify cache duration (in seconds) and driver using the following env variables.
+
+```dotenv
+PLAUSIBLE_CACHE_DURATION=300
+PLAUSIBLE_CACHE_DRIVER=redis
+```
+
+If for some reason you don't want to cache response, you can turn off caching entirely by adding the following env variable.
+
+```dotenv
+PLAUSIBLE_CACHE=false
+```
+
 
 ## Testing
 >**Info**
