@@ -17,7 +17,7 @@ class Plausible
     {
         $this->connector = new PlausibleConnector();
 
-        if(! config(key: 'plausible.cache.enabled')){
+        if(! config(key: 'plausible.cache.enabled')) {
             $this->connector->disableCaching();
         };
     }

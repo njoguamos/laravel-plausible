@@ -69,7 +69,7 @@ return [
       |
       */
     'allowed_metrics' => [
-        'default'     => [
+        'default' => [
             'visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration', 'events'
         ],
 
