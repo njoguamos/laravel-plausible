@@ -61,7 +61,7 @@ use NjoguAmos\Plausible\Facades\Plausible;
 $all = Plausible::aggregates();
 ```
 
-### 1. Getting Aggregates
+### 2. Getting Aggregates
 
 To get the aggregates, run a request as follows.
 
@@ -80,7 +80,7 @@ $aggregates = (new Plausible())
         date: '2023-01-01,2023-01-31'
     );
 ```
-The response a json
+A successful response will be a json. Example;
 ```json
 {
     "bounce_rate": {
@@ -182,6 +182,137 @@ Date in `Y-m-d` format. Individual date e.g `2023-01-04` or a range  `2023-01-01
 >**Info**
 > You must include `period: 'custom'` when you provide a date range.
 </details>
+
+### 3. Getting Time Series
+
+To get the timeseries data over a certain time period, run a request as follows.
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+// Simple with default
+$aggregates = (new Plausible())->timeSeries();
+
+// Or with optional custom parameters
+$aggregates = (new Plausible())
+    ->timeSeries(
+        period: 'custom',
+        metrics: ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'],
+        filters: ['event:page==/blog**'],
+        interval: 'month',
+        date: '2023-01-01,2023-01-31'
+    );
+```
+A successful response will be a json. Example;
+```json
+[
+    {
+        "bounce_rate": 17,
+        "date": "2023-01-01",
+        "pageviews": 60,
+        "views_per_visit": 19,
+        "visit_duration": 525,
+        "visitors": 6,
+        "visits": 6
+    },
+    {
+        "bounce_rate": 12,
+        "date": "2023-01-02",
+        "pageviews": 22,
+        "views_per_visit": 4,
+        "visit_duration": 149,
+        "visitors": 6,
+        "visits": 8
+    },
+    {
+        "bounce_rate": 57,
+        "date": "2023-01-03",
+        "pageviews": 9,
+        "views_per_visit": 2.57,
+        "visit_duration": 48,
+        "visitors": 7,
+        "visits": 7
+    },
+    {
+        "bounce_rate": 71,
+        "date": "2023-01-04",
+        "pageviews": 48,
+        "views_per_visit": 8.43,
+        "visit_duration": 301,
+        "visitors": 7,
+        "visits": 7
+    }
+]
+```
+
+#### Timeseries parameters explained `expand to view more details`.
+
+<details open>
+<summary>Period - string, optional</summary>
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+$aggregates = (new Plausible(period: '6mo'))->timeSeries()
+```
+The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7d`,`day`, or `custom`. If not provided, period will default to `30d`;
+</details>
+
+<details>
+<summary> 
+    Metrics - array, optional
+</summary>
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+$aggregates = (new Plausible())->timeSeries(metrics: ['visits', 'pageviews', 'views_per_visit'])
+```
+The `metrics` must contain either of the the allowed ones i.e `visitors`,`visits`,`pageviews`,`views_per_visit`,`bounce_rate`,`visit_duration`, or `events`. If not provided, all metrics will be included.
+</details>
+
+<details>
+<summary> 
+    Filters - array, optional
+</summary>
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+$aggregates = (new Plausible())->timeSeries(filters: ['event:page==/blog**', 'visit:browser==Firefox'])
+```
+Your filters must be properly formed as per [plausible instructions](https://plausible.io/docs/stats-api#filtering). Filters defaults to `null`.
+</details>
+
+<details>
+<summary> 
+    Interval - string, optional
+</summary>
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+$aggregates = (new Plausible())->timeSeries(interval: 'month')
+```
+Interval can only be either `month` or `date`. When not provided, it defaults to date.
+</details>
+
+<details>
+<summary> 
+    Date - string, optional
+</summary>
+
+```php
+use \NjoguAmos\Plausible\Plausible;
+
+$aggregates = (new Plausible())->timeSeries(period: 'custom', date: '2023-01-01,2023-01-31')
+```
+Date in `Y-m-d` format. Individual date e.g `2023-01-04` or a range  `2023-01-01,2023-01-31`. When not provided, date defaults to `current date`.
+
+>**Info**
+> You must include `period: 'custom'` when you provide a date range.
+</details>
+
 
 ## Testing
 >**Info**
