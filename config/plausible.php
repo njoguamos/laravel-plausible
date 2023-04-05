@@ -57,16 +57,19 @@ return [
       | Metrics are a variety of measurements made on your plausible website
       | in order to better track its performance and statistics.
       |
+      |  visitors - The number of unique visitors.
+      |  visits - The number of visits/sessions
+      |  pageviews - The number of pageview events
+      |  views_per_visit - The number of pageviews divided by the number of visits. Returns a floating point number. currently only supported in Aggregate and Timeseries endpoints.
+      |  bounce_rate - Bounce rate percentage
+      |  visit_duration - Visit duration in seconds
+      |  events - The number of events (pageviews + custom events)
+      |
       | @see https://plausible.io/docs/metrics-definitions
       |
       */
     'allowed_metrics' => [
-        'visitors',	# The number of unique visitors.
-        'visits',	# The number of visits/sessions
-        'pageviews',	# The number of pageview events
-        'views_per_visit',	# The number of pageviews divided by the number of visits. Returns a floating point number. currently only supported in Aggregate and Timeseries endpoints.
-        'bounce_rate',	# Bounce rate percentage
-        'visit_duration',	# Visit duration in seconds
-        'events',	# The number of events (pageviews + custom events)
+        'default'     => ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration', 'events'],
+        'time-series' => ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'],
     ]
 ];
