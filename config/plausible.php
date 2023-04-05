@@ -69,7 +69,31 @@ return [
       |
       */
     'allowed_metrics' => [
-        'default'     => ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration', 'events'],
-        'time-series' => ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'],
+        'default'     => [
+            'visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration', 'events'
+        ],
+
+        'time-series' => [
+            'visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'
+        ],
+    ],
+
+    /*
+      |--------------------------------------------------------------------------
+      | Caching
+      |--------------------------------------------------------------------------
+      |
+      | Caching can be incredibly powerful and can speed up an application by
+      | relying less on a third-party integration. By default response are
+      | cached using Laravel default cache drive. Feel free to change
+      | to any drive supported by Laravel.
+      |
+      | @see https://docs.saloon.dev/digging-deeper/caching-responses
+      |
+      */
+    'cache' => [
+        'duration' => env(key: 'PLAUSIBLE_CACHE_DURATION', default: 180),
+
+        'driver' => env(key: 'PLAUSIBLE_CACHE_DRIVER', default: env(key: 'CACHE_DRIVER', default: 'file')),
     ]
 ];
