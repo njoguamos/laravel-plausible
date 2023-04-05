@@ -3,16 +3,38 @@
 namespace NjoguAmos\Plausible;
 
 use NjoguAmos\Plausible\Connectors\PlausibleConnector;
+use NjoguAmos\Plausible\Requests\GetAggregates;
 use NjoguAmos\Plausible\Requests\GetRealtimeVisitors;
 
 class Plausible
 {
+    protected PlausibleConnector $connector;
+
+    public function __construct()
+    {
+        $this->connector = new PlausibleConnector();
+    }
+
     public function realtime()
     {
-        $plausible = new PlausibleConnector();
+        return $this->connector->send(new GetRealtimeVisitors())->body();
+    }
 
-        $response = $plausible->send(new GetRealtimeVisitors());
+    public function aggregates(
+        ?string $period = '30d',
+        array $metrics = [],
+        bool $compare = true,
+        array $filters = [],
+        ?string $date = null,
+    ) {
+        $request = new GetAggregates(
+            period: $period,
+            metrics: $metrics ?: config(key: 'plausible.allowed_metrics'),
+            compare: $compare,
+            filters: $filters,
+            date: $date ?: now()->format(format: 'Y-m-d'),
+        );
 
-        return $response->body();
+        return $this->connector->send($request)->json('results');
     }
 }
