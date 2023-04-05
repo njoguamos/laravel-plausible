@@ -53,6 +53,14 @@ The response in a single digit number
 12
 ```
 
+If you prefer using facades, then you can do as follows.
+
+```php
+use NjoguAmos\Plausible\Facades\Plausible;
+
+$all = Plausible::aggregates();
+```
+
 ### 1. Getting Aggregates
 
 To get the aggregates, run a request as follows.
@@ -60,7 +68,17 @@ To get the aggregates, run a request as follows.
 ```php
 use \NjoguAmos\Plausible\Plausible;
 
+// Simple with default
 $aggregates = (new Plausible())->aggregates();
+
+// Or with optional custom parameters
+$aggregates = (new Plausible())
+    ->aggregates(
+        period: 'custom',
+        metrics: ['visitors', 'visits', 'pageviews'],
+        filters: ['event:page==/blog**', 'visit:country==KE'],
+        date: '2023-01-01,2023-01-31'
+    );
 ```
 The response a json
 ```json
@@ -96,9 +114,9 @@ The response a json
 }
 ```
 
-#### Aggregates parameters explained.
+#### Aggregates parameters explained `expand to view more details`.
 
-<details>
+<details open>
 <summary>Period - string, optional</summary>
 
 ```php
@@ -117,7 +135,7 @@ The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7
 ```php
 use \NjoguAmos\Plausible\Plausible;
 
-$aggregates = (new Plausible(metrics: ['visitors', 'visits'] ))->aggregates()
+$aggregates = (new Plausible())->aggregates(metrics: ['visitors', 'visits'])
 ```
 The `metrics` must contain either of the the allowed ones i.e `visitors`,`visits`,`pageviews`,`views_per_visit`,`bounce_rate`,`visit_duration`, or `events`. If not provided, all metrics will be included.
 </details>
@@ -130,7 +148,7 @@ The `metrics` must contain either of the the allowed ones i.e `visitors`,`visits
 ```php
 use \NjoguAmos\Plausible\Plausible;
 
-$aggregates = (new Plausible(compare: false ))->aggregates()
+$aggregates = (new Plausible())->aggregates(compare: false )
 ```
 `compare` defaults to `true`, meaning that the percent difference with the previous period for each metric will be calculated.
 </details>
@@ -144,7 +162,7 @@ $aggregates = (new Plausible(compare: false ))->aggregates()
 ```php
 use \NjoguAmos\Plausible\Plausible;
 
-$aggregates = (new Plausible(filtesr: ['visit:browser==Firefox', 'visit:country==FR|DE'] ))->aggregates()
+$aggregates = (new Plausible())->aggregates(filters: ['event:page==/blog**', 'visit:country==KE|DE'])
 ```
 Your filters must be properly formed as per [plausible instructions](https://plausible.io/docs/stats-api#filtering). Filters defaults to `null`.
 </details>
@@ -157,9 +175,12 @@ Your filters must be properly formed as per [plausible instructions](https://pla
 ```php
 use \NjoguAmos\Plausible\Plausible;
 
-$aggregates = (new Plausible(date: '2023-01-01,2023-01-31' ))->aggregates()
+$aggregates = (new Plausible())->aggregates(period: 'custom', date: '2023-01-01,2023-01-31')
 ```
-Date in `Y-m-d` format. Individual date e.g `2023-01-04' or a range  `2023-01-01,2023-01-31`. When not provided, date defaults to current date.
+Date in `Y-m-d` format. Individual date e.g `2023-01-04` or a range  `2023-01-01,2023-01-31`. When not provided, date defaults to `current date`.
+
+>**Info**
+> You must include `period: 'custom'` when you provide a date range.
 </details>
 
 ## Testing
