@@ -11,14 +11,20 @@ class Plausible
 {
     protected PlausibleConnector $connector;
 
+    protected bool $cacheEnabled;
+
     public function __construct()
     {
         $this->connector = new PlausibleConnector();
+
+        if(! config(key: 'plausible.cache.enabled')){
+            $this->connector->disableCaching();
+        };
     }
 
     public function realtime()
     {
-        return $this->connector->send(new GetRealtimeVisitors())->body();
+        return $this->connector->send(request: new GetRealtimeVisitors())->body();
     }
 
     public function aggregates(
@@ -36,7 +42,7 @@ class Plausible
             date: $date ?: now()->format(format: 'Y-m-d'),
         );
 
-        return $this->connector->send($request)->json('results');
+        return $this->connector->send(request: $request)->json(key: 'results');
     }
 
     public function timeSeries(
@@ -54,6 +60,6 @@ class Plausible
             date: $date ?: now()->format(format: 'Y-m-d'),
         );
 
-        return $this->connector->send($request)->json('results');
+        return $this->connector->send(request: $request)->json(key: 'results');
     }
 }

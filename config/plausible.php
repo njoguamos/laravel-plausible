@@ -92,6 +92,8 @@ return [
       |
       */
     'cache' => [
+        'enabled' => env(key: 'PLAUSIBLE_CACHE', default: true),
+
         'duration' => env(key: 'PLAUSIBLE_CACHE_DURATION', default: 180),
 
         'driver' => env(key: 'PLAUSIBLE_CACHE_DRIVER', default: env(key: 'CACHE_DRIVER', default: 'file')),
