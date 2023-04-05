@@ -6,7 +6,7 @@ use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
 
 it(description: 'it can get aggregates', closure: function () {
-    $url = 'plausible.io/api/v1/stats/aggregates';
+    $url = 'plausible.io/api/v1/*';
 
     $responseData = [
         "results" => [
@@ -29,7 +29,7 @@ it(description: 'it can get aggregates', closure: function () {
 
     $response = $plausible->send(new GetAggregates());
 
-    expect($response->body())->toBe($responseData['results']);
+    expect($response->body())->toBe(json_encode($responseData));
 });
 
 test(description: 'it throws an error when invalid period is provided', closure: function () {
