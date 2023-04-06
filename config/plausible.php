@@ -35,18 +35,40 @@ return [
       | The options are identical for each endpoint that supports configurable
       | time periods. Each period is relative to a date parameter. The date
       | should follow the standard ISO-8601 format.
+      | 12mo - Last n calendar months relative to date.
+      | 6mo - Last n calendar months relative to date.
+      | month -  The calendar month that date falls into.
+      | 30d - Last n days relative to date.
+      | 7d - Last n days relative to date.
+      | day - Stats for the full day specified in date.
+      | custom - Provide a custom range in the date parameter.
       |
       | @see https://plausible.io/docs/stats-api#time-periods
       |
       */
     'allowed_periods' => [
-        '12mo', # Last n calendar months relative to date.
-        '6mo', # Last n calendar months relative to date.
-        'month', # The calendar month that date falls into.
-        '30d', #Last n days relative to date.
-        '7d', #Last n days relative to date.
-        'day', #Stats for the full day specified in date.
-        'custom' # Provide a custom range in the date parameter.
+        '12mo', '6mo', 'month', '30d', '7d', 'day', 'custom'
+    ],
+
+    /*
+      |--------------------------------------------------------------------------
+      | Properties
+      |--------------------------------------------------------------------------
+      |
+      | Each pageview and custom event in our database has some predefined properties
+      | associated with it. In other analytics tools, these are often referred to as
+      | dimensions as well. Properties can be used for filtering and breaking down
+      | your stats to drill into more depth.
+      |
+      | @see https://plausible.io/docs/stats-api#properties
+      |
+      */
+    'allowed_properties' => [
+        'event:name', 'event:page', 'visit:entry_page', 'visit:exit_page', 'visit:source',
+        'visit:referrer', 'visit:utm_medium', 'visit:utm_source', 'visit:utm_campaign',
+        'visit:utm_content', 'visit:utm_term', 'visit:device', 'visit:browser',
+        'visit:browser_version', 'visit:os', 'visit:os_version', 'visit:country',
+        'visit:region', 'visit:city'
     ],
 
     /*
@@ -76,7 +98,11 @@ return [
         'time-series' => [
             'visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'
         ],
+        'breakdown' => [
+            'visitors', 'visits', 'pageviews', 'bounce_rate', 'visit_duration'
+        ],
     ],
+
 
     /*
       |--------------------------------------------------------------------------

@@ -1,3 +1,3 @@
 <?php
 
-todo('test realtime visitors');
+todo('Plausible facade class.');
