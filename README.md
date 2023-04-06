@@ -1,5 +1,4 @@
 
-![Cover image](/cover.png)
 # Plausible Analytics for Laravel 10+
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/njoguamos/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-plausible)
