@@ -1,3 +1,4 @@
+
 ![Cover image](/cover.png)
 # Plausible Analytics for Laravel 10+
 
@@ -6,7 +7,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/njoguamos/laravel-plausible/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/njoguamos/laravel-plausible/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/njoguamos/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/njoguamos/laravel-plausible)
 
-[Plausible](https://plausible.io/) Plausible is intuitive, lightweight and open source web analytics. Plausible has no cookies and fully compliant with GDPR, CCPA and PECR.
+[Plausible](https://plausible.io/) is intuitive, lightweight and open source web analytics. Plausible has no cookies and fully compliant with GDPR, CCPA and PECR.
 
 >**Info**
 > This package focuses on server side validation. 
@@ -25,9 +26,9 @@ You can initialise the package with:
 php artisan plausible:install
 ```
 
-The install command will publish the [config file](/config/plausible.php).
+Install command will publish the [config file](/config/plausible.php).
 
-Ensure that you have update your application `.env` with credentials from [cloudflare](https://developers.cloudflare.com/plausible/get-started/) i.e.
+Ensure that you have updated your application `.env` with credentials from [cloudflare](https://developers.cloudflare.com/plausible/get-started/) i.e.
 
 ```dotenv
 #.env file
@@ -37,7 +38,6 @@ PLAUSIBLE_API_KEY=
 ```
 
 ## Usage
-There are three way to use this package.
 
 ### 1. Getting Realtime Visitors
 
@@ -313,9 +313,59 @@ Date in `Y-m-d` format. Individual date e.g `2023-01-04` or a range  `2023-01-01
 > You must include `period: 'custom'` when you provide a date range.
 </details>
 
-### 4. Getting Breakdown
-```text
-@TODO: Working on it
+### 4. Getting Breakdowns
+
+To get a breakdown of your stats by some property, run a request as follows.
+
+```php
+use \NjoguAmos\Plausible\Facades\Plausible;
+
+$visitors = Plausible::breakdown();
+```
+The response in a single digit number
+```json
+[
+    {
+        "bounce_rate": 71,
+        "page": "/",
+        "pageviews": 146,
+        "visit_duration": 126,
+        "visitors": 87,
+        "visits": 77
+    },
+    {
+        "bounce_rate": 54,
+        "page": "/articles",
+        "pageviews": 179,
+        "visit_duration": 206,
+        "visitors": 71,
+        "visits": 50
+    },
+    {
+        "bounce_rate": 81,
+        "page": "/blog/about-laravel-plausible",
+        "pageviews": 42,
+        "visit_duration": 27,
+        "visitors": 35,
+        "visits": 37
+    },
+    {
+        "bounce_rate": 52,
+        "page": "/pricing",
+        "pageviews": 72,
+        "visit_duration": 147,
+        "visitors": 31,
+        "visits": 27
+    },
+    {
+        "bounce_rate": 76,
+        "page": "/aquatadas",
+        "pageviews": 22,
+        "visit_duration": 82,
+        "visitors": 21,
+        "visits": 21
+    }
+]
 ```
 
 ### 5. Caching Response
