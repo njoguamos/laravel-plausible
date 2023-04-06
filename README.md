@@ -8,8 +8,6 @@
 
 [Plausible](https://plausible.io/) is intuitive, lightweight and open source web analytics. Plausible has no cookies and fully compliant with GDPR, CCPA and PECR.
 
->**Info**
-> This package focuses on server side validation. 
 
 ## Installation
 
@@ -27,7 +25,7 @@ php artisan plausible:install
 
 Install command will publish the [config file](/config/plausible.php).
 
-Ensure that you have updated your application `.env` with credentials from [cloudflare](https://developers.cloudflare.com/plausible/get-started/) i.e.
+Ensure that you have updated your application `.env` with credentials from [Plausible](https://plausible.io/docs/stats-api) i.e.
 
 ```dotenv
 #.env file
