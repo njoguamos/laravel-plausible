@@ -120,7 +120,7 @@ A successful response will be a json. Example;
 ```php
 use NjoguAmos\Plausible\Facades\Plausible;
 
-$aggregates = Plausible())->aggregates(period: '7d')
+$aggregates = Plausible::aggregates(period: '7d')
 ```
 The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7d`,`day`, or `custom`. If not provided, period will default to `30d`;
 </details>
@@ -317,7 +317,17 @@ To get a breakdown of your stats by some property, run a request as follows.
 ```php
 use \NjoguAmos\Plausible\Facades\Plausible;
 
+// Simple with defaults
 $visitors = Plausible::breakdown();
+
+// With optional parameters
+$aggregates = Plausible::breakdown(
+        property: 'event:page',
+        period: '12mo',
+        metrics: ['visitors', 'visits', 'pageviews'],
+        filters: 'event:page==/blog**',
+        limit: 500
+    );
 ```
 The response in a single digit number
 ```json
@@ -384,7 +394,7 @@ The `property` MUST be either of the allowed ones i.e. `visitors`, `visits`, `pa
 ```php
 use NjoguAmos\Plausible\Facades\Plausible;
 
-$aggregates = Plausible())->breakdown(period: '6mo')
+$aggregates = Plausible::breakdown(period: '6mo')
 ```
 The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7d`,`day`, or `custom`. If not provided, period will default to `30d`;
 </details>
