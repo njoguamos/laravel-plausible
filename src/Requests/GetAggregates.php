@@ -11,7 +11,7 @@ class GetAggregates extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        public ?string $period = '30d',
+        public string $period = '30d',
         public array $metrics = [],
         public bool $compare = true,
         public array $filters = [],
