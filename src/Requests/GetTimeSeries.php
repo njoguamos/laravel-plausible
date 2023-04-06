@@ -11,10 +11,10 @@ class GetTimeSeries extends Request
     protected Method $method = Method::GET;
 
     public function __construct(
-        public ?string $period = '30d',
+        public string $period = '30d',
         public array $metrics = [],
         public array $filters = [],
-        public ?string $interval = 'date',
+        public string $interval = 'date',
         public ?string $date = null,
     ) {
         if (! in_array(needle: $this->interval, haystack: ['date','month'])) {
