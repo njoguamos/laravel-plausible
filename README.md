@@ -71,8 +71,7 @@ use NjoguAmos\Plausible\Facades\Plausible;
 $aggregates = Plausible::aggregates();
 
 // Or with optional custom parameters
-$aggregates = (new Plausible())
-    ->aggregates(
+$aggregates = Plausible::aggregates(
         period: 'custom',
         metrics: ['visitors', 'visits', 'pageviews'],
         filters: ['event:page==/blog**', 'visit:country==KE'],
@@ -121,7 +120,7 @@ A successful response will be a json. Example;
 ```php
 use NjoguAmos\Plausible\Facades\Plausible;
 
-$aggregates = (new Plausible(period: '7d'))->aggregates()
+$aggregates = Plausible())->aggregates(period: '7d')
 ```
 The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7d`,`day`, or `custom`. If not provided, period will default to `30d`;
 </details>
@@ -136,7 +135,7 @@ use NjoguAmos\Plausible\Facades\Plausible;
 
 $aggregates = Plausible::aggregates(metrics: ['visitors', 'visits'])
 ```
-The `metrics` must contain either of the the allowed ones i.e `visitors`,`visits`,`pageviews`,`views_per_visit`,`bounce_rate`,`visit_duration`, or `events`. If not provided, all metrics will be included.
+The `metrics` must contain either of the allowed ones i.e `visitors`,`visits`,`pageviews`,`views_per_visit`,`bounce_rate`,`visit_duration`, or `events`. If not provided, all metrics will be included.
 </details>
 
 <details>
@@ -193,8 +192,7 @@ use NjoguAmos\Plausible\Facades\Plausible;
 $aggregates = Plausible::timeSeries();
 
 // Or with optional custom parameters
-$aggregates = (new Plausible())
-    ->timeSeries(
+$aggregates = Plausible::timeSeries(
         period: 'custom',
         metrics: ['visitors', 'visits', 'pageviews', 'views_per_visit', 'bounce_rate', 'visit_duration'],
         filters: ['event:page==/blog**'],
@@ -386,7 +384,7 @@ The `property` MUST be either of the allowed ones i.e. `visitors`, `visits`, `pa
 ```php
 use NjoguAmos\Plausible\Facades\Plausible;
 
-$aggregates = (new Plausible())->breakdown(period: '6mo')
+$aggregates = Plausible())->breakdown(period: '6mo')
 ```
 The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7d`,`day`, or `custom`. If not provided, period will default to `30d`;
 </details>
