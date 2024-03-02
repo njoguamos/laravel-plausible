@@ -11,7 +11,7 @@ return [
       |
       |
       */
-    'base_url' => env(key: 'PLAUSIBLE_BASE_URL', 'https://plausible.io/api/v1/stats'),
+    'base_url' => env(key: 'PLAUSIBLE_BASE_URL', default: 'https://plausible.io/api/v1/stats'),
       
     /*
       |--------------------------------------------------------------------------
