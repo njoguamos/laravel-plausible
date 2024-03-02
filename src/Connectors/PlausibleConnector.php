@@ -20,7 +20,7 @@ class PlausibleConnector extends Connector implements Cacheable
 
     public function resolveBaseUrl(): string
     {
-        return 'https://plausible.io/api/v1/stats';
+        return config(key: 'plausible.base_url');
     }
 
     public function defaultConfig(): array
