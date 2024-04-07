@@ -3,8 +3,9 @@
     "description": "A laravel package for interacting with plausible analytics api.",
     "keywords": [
         "NjoguAmos",
-        "laravel",
-        "laravel-plausible"
+        "Laravel",
+        "Plausible",
+        "Analytics"
     ],
     "homepage": "https://github.com/njoguamos/laravel-plausible",
     "license": "MIT",
@@ -16,19 +17,18 @@
         }
     ],
     "require": {
-        "php": "^8.1 | ^8.2",
+        "php": "^8.1 | ^8.2 | ^8.3",
         "guzzlehttp/guzzle": "^7.5",
-        "illuminate/contracts": "^10.0",
-        "illuminate/support": "^10.0",
-        "sammyjo20/saloon-cache-plugin": "^2.0",
-        "sammyjo20/saloon-laravel": "^2.0",
-        "spatie/laravel-package-tools": "^1.14.0"
+        "illuminate/contracts": "^10.0 | ^11.0",
+        "sammyjo20/saloon-cache-plugin": "^3.0",
+        "sammyjo20/saloon-laravel": "^3.5",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^7.9",
+        "nunomaduro/collision": "^v7.10 | ^v8.1",
         "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^8.0",
+        "orchestra/testbench": "^8.22 | ^9.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-arch": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
