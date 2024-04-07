@@ -35,7 +35,7 @@ PLAUSIBLE_API_KEY=
 #PLAUSIBLE_BASE_URL= <-- (Optional) for self-hosted
 ```
 
-> *Note* If you are using a self-hosted version of plausible, ensure that you include `PLAUSIBLE_BASE_URL` to point to your custom domain.
+> *Note* If you are using a self-hosted version of plausible, ensure that you define `PLAUSIBLE_BASE_URL` to point to your custom domain.
 
 
 ## Usage
