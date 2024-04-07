@@ -32,7 +32,11 @@ Ensure that you have updated your application `.env` with credentials from [Plau
 
 PLAUSIBLE_SITE_ID=
 PLAUSIBLE_API_KEY=
+#PLAUSIBLE_BASE_URL= <-- (Optional) for self-hosted
 ```
+
+> *Note* If you are using a self-hosted version of plausible, ensure that you include `PLAUSIBLE_BASE_URL` to point to your custom domain.
+
 
 ## Usage
 
