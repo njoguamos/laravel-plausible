@@ -12,7 +12,7 @@ return [
       |
       */
     'base_url' => env(key: 'PLAUSIBLE_BASE_URL', default: 'https://plausible.io/api/v1/stats'),
-      
+
     /*
       |--------------------------------------------------------------------------
       | Site ID (Domain)
