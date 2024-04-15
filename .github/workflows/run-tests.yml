@@ -36,7 +36,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip
           tools: composer:v2
-          coverage: none
+          coverage: xdebug
 
       - name: Setup problem matchers
         run: |
@@ -52,4 +52,4 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: vendor/bin/pest --ci
+        run: vendor/bin/pest --ci --coverage

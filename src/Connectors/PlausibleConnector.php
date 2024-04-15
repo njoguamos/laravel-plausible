@@ -4,6 +4,7 @@ namespace NjoguAmos\Plausible\Connectors;
 
 use Illuminate\Support\Facades\Cache;
 use Saloon\CachePlugin\Traits\HasCaching;
+use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
 use Saloon\CachePlugin\Contracts\Driver;
 use Saloon\CachePlugin\Drivers\LaravelCacheDriver;
@@ -13,9 +14,16 @@ class PlausibleConnector extends Connector implements Cacheable
 {
     use HasCaching;
 
+    protected ?string $token;
+
     public function __construct()
     {
-        $this->withTokenAuth(token: config(key: 'plausible.api_key'));
+        $this->token = config(key: 'plausible.api_key');
+    }
+
+    protected function defaultAuth(): TokenAuthenticator
+    {
+        return new TokenAuthenticator($this->token);
     }
 
     public function resolveBaseUrl(): string
