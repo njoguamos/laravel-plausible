@@ -16,6 +16,7 @@ class GetAggregates extends Request
         public bool $compare = true,
         public array $filters = [],
         public ?string $date = null,
+        public ?bool $withImported = false
     ) {
         if (!in_array(needle: $this->period, haystack: config(key: 'plausible.allowed_periods'))) {
             throw new RuntimeException(message: trans(key: 'plausible::plausible.invalid_period'));
@@ -45,6 +46,10 @@ class GetAggregates extends Request
 
         if ($this->compare) {
             $query['compare'] = 'previous_period';
+        }
+
+        if ($this->withImported) {
+            $query['with_imported'] = 'true';
         }
 
         return $query;

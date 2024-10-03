@@ -77,7 +77,8 @@ $aggregates = Plausible::aggregates(
         period: 'custom',
         metrics: ['visitors', 'visits', 'pageviews'],
         filters: ['event:page==/blog**', 'visit:country==KE'],
-        date: '2023-01-01,2023-01-31'
+        date: '2023-01-01,2023-01-31',
+        withImported: true
     );
 ```
 A successful response will be a json. Example;
@@ -128,7 +129,7 @@ The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7
 </details>
 
 <details>
-<summary> 
+<summary>
     Metrics - array, optional
 </summary>
 
@@ -141,7 +142,7 @@ The `metrics` must contain either of the allowed ones i.e `visitors`,`visits`,`p
 </details>
 
 <details>
-<summary> 
+<summary>
     Compare - boolean, optional
 </summary>
 
@@ -155,7 +156,7 @@ $aggregates = Plausible::aggregates(compare: false )
 
 
 <details>
-<summary> 
+<summary>
     Filters - array, optional
 </summary>
 
@@ -168,7 +169,7 @@ Your filters must be properly formed as per [plausible instructions](https://pla
 </details>
 
 <details>
-<summary> 
+<summary>
     Date - string, optional
 </summary>
 
@@ -258,7 +259,7 @@ The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7
 </details>
 
 <details>
-<summary> 
+<summary>
     Metrics - array, optional
 </summary>
 
@@ -271,7 +272,7 @@ The `metrics` must contain either of the allowed ones i.e `visitors`,`visits`,`p
 </details>
 
 <details>
-<summary> 
+<summary>
     Filters - array, optional
 </summary>
 
@@ -284,7 +285,7 @@ Your filters must be properly formed as per [plausible instructions](https://pla
 </details>
 
 <details>
-<summary> 
+<summary>
     Interval - string, optional
 </summary>
 
@@ -297,7 +298,7 @@ Interval can only be either `month` or `date`. When not provided, it defaults to
 </details>
 
 <details>
-<summary> 
+<summary>
     Date - string, optional
 </summary>
 
@@ -403,7 +404,7 @@ The `period` MUST be either of the allowed ones i.e `12mo`,`6mo`,`month`,`0d`,`7
 
 
 <details>
-<summary> 
+<summary>
     Date - string, optional
 </summary>
 
@@ -412,13 +413,13 @@ use NjoguAmos\Plausible\Facades\Plausible;
 
 $aggregates = Plausible::breakdown(date: '2023-01-01')
 ```
-Date in `Y-m-d` format. 
+Date in `Y-m-d` format.
 >**Info**
 > `period: 'custom'` is not supported. `date: '2023-01-01,2023-02-02' is not supported.
 </details>
 
 <details>
-<summary> 
+<summary>
     Metrics - array, optional
 </summary>
 
@@ -431,7 +432,7 @@ The `metrics` must contain either of the allowed ones i.e `visitors`,`visits`,`p
 </details>
 
 <details>
-<summary> 
+<summary>
     Limit - int, optional
 </summary>
 
@@ -444,7 +445,7 @@ The results limit. It must be between `1` and `1000`. When not provided, limit d
 </details>
 
 <details>
-<summary> 
+<summary>
     Page - int, optional
 </summary>
 
@@ -457,7 +458,7 @@ Page for the results. When not provided, page defaults to `1`.
 </details>
 
 <details>
-<summary> 
+<summary>
     Filters - string, optional
 </summary>
 
