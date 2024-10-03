@@ -74,13 +74,16 @@ $aggregates = Plausible::aggregates();
 
 // Or with optional custom parameters
 $aggregates = Plausible::aggregates(
-        period: 'custom',
-        metrics: ['visitors', 'visits', 'pageviews'],
-        filters: ['event:page==/blog**', 'visit:country==KE'],
-        date: '2023-01-01,2023-01-31',
-        withImported: true
-    );
+    period: 'custom',
+    metrics: ['visitors', 'visits', 'pageviews'],
+    filters: ['event:page==/blog**'],
+    date: '2023-01-01,2023-01-31',
+    withImported: true
+);
 ```
+
+>[Note] Filtering by imported data is limited. The general rule is that you cannot filter by two different properties at the same time. Learn more from [Plausible Imported stats documentation](https://plausible.io/docs/stats-api#imported-stats)
+
 A successful response will be a json. Example;
 ```json
 {
