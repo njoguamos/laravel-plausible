@@ -34,6 +34,7 @@ class Plausible
         bool    $compare = true,
         array   $filters = [],
         ?string $date = null,
+        bool $withImported = false
     ) {
         $request = new GetAggregates(
             period: $period,
@@ -41,6 +42,7 @@ class Plausible
             compare: $compare,
             filters: $filters,
             date: $date ?: now()->format(format: 'Y-m-d'),
+            withImported: $withImported
         );
 
         return $this->connector->send(request: $request)->json(key: 'results');
